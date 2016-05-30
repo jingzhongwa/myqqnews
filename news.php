@@ -10,6 +10,7 @@ if( isset( $_REQUEST['act']) && $_REQUEST['act'] == 'cmt_num_order' ){
 	while( $row = mysql_fetch_assoc( $source ) ){
 		$res[] = $row;
 	}
+	$smarty->assign( 'page_title', "评论数最多的20条新闻" );
 	$smarty->assign( 'row_list', $res );
 	$smarty->display( 'news.htm' );
 }
