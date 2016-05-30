@@ -10,24 +10,6 @@ if( isset( $_REQUEST['act']) && $_REQUEST['act'] == 'cmt_num_order' ){
 	while( $row = mysql_fetch_assoc( $source ) ){
 		$res[] = $row;
 	}
-?>
-
-<h1>评论数最多的20条新闻</h1>
-<table>
-<tr>
-	<th>新闻标题</th>
-	<th>新闻评论数</th>
-</tr>
-<?php foreach( $res as $row ){ ?>
-	<tr>
-		<td><a href="<?php echo $row['link']; ?>"><?php echo $row['title']; ?></a></td>
-		<td><?php echo $row['cmt_num']; ?></td>
-	</tr>
-<?php }//foreach ?>
-</table>
-<?php }//if ?>
-
-<p>本页功能：</p>
-<ul>
-	<li><a href="news.php?act=cmt_num_order">评论数最多的20条新闻</a></li>
-</ul>
+	$smarty->assign( 'row_list', $res );
+	$smarty->display( 'news.htm' );
+}

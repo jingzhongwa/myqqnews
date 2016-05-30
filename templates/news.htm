@@ -1,0 +1,14 @@
+<meta charset="utf-8" />
+<h1>评论数最多的20条新闻</h1>
+<table>
+	<tr>
+		<th>新闻标题</th>
+		<th>新闻评论数</th>
+	</tr>
+	{foreach $row_list as $row}
+	<tr>
+		<td><a href="{$row.link}">{$row.title}</td>
+		<td>{$row.cmt_num}</td>
+	</tr>
+	{/foreach}
+</table>

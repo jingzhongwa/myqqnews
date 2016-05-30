@@ -1,0 +1,16 @@
+<meta charset="utf-8" />
+<h1></h1>
+<table>
+	<tr>
+		{foreach $th_list as $th}
+			<th>{$th}</th>
+		{/foreach}
+	</tr>
+	{foreach $row_list as $row}
+	<tr>
+		{foreach $row as $word}
+			<td>{$word}</td>
+		{/foreach}
+	</tr>
+	{/foreach}
+</table>

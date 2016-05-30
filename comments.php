@@ -9,26 +9,7 @@ if( isset( $_REQUEST['act']) && $_REQUEST['act'] == 'up_num_order' ){
 	while( $row = mysql_fetch_assoc( $source ) ){
 		$res[] = $row;
 	}
-?>
-
-<h1>点赞数最多的100条评论</h1>
-<table>
-<tr>
-	<th>新闻标题</th>
-	<th>评论内容</th>
-	<th>点赞数</th>
-</tr>
-<?php foreach( $res as $row ){ ?>
-	<tr>
-		<td><a href="<?php echo $row['link']; ?>"><?php echo $row['title']; ?></a></td>
-		<td><?php echo $row['cmt']; ?></td>
-		<td><?php echo $row['up']; ?></td>
-	</tr>
-<?php }//foreach ?>
-</table>
-<?php }//if ?>
-
-<p>本页功能：</p>
-<ul>
-	<li><a href="comments.php?act=up_num_order">点赞数最多的100条评论</a></li>
-</ul>
+	$smarty->assign( 'page_title', '点赞数最多的100条评论' );
+	$smarty->assign( 'row_list', $res );
+	$smarty->display( 'comments.htm' );
+}

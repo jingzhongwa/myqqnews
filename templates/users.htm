@@ -1,0 +1,16 @@
+<meta charset="utf-8" />
+<h1>{$page_title}</h1>
+<table>
+	<tr>
+		<th>用户昵称</th>
+		<th>用户获得赞数</th>
+		<th>用户发表评论数</th>
+	</tr>
+	{foreach $row_list as $row}
+	<tr>
+		<td>{$row.nick}</td>
+		<td>{$row.up}</td>
+		<td>{$row.cmt_num}</td>
+	</tr>
+	{/foreach}
+</table>
