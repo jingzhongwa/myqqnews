@@ -1,16 +1,27 @@
-<meta charset="utf-8" />
-<h1>{$page_title}</h1>
-<table>
-	<tr>
-		<th>新闻标题</th>
-		<th>评论内容</th>
-		<th>点赞数</th>
-	</tr>
-	{foreach $row_list as $row}
-	<tr>
-		<td><a href="{$row.link}">{$row.title}</td>
-		<td>{$row.cmt}</td>
-		<td>{$row.up}</td>
-	</tr>
-	{/foreach}
-</table>
+{include file="table_header.htm"}
+<body>
+<!-- 这是内容部分 -->
+<div class="container">
+	<div calss="row">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row-newstwo pack_div">
+			<nav class="navbar navbar-inverse"> <a class="navbar-brand" href="#">{$page_title}</a></nav>
+			<table class="table table-striped table-bordered">
+				<thead>
+					<th>新闻标题</th>
+					<th>图表</th>
+					<th>评论内容</th>
+					<th>点赞数</th>
+				</thead>
+				{foreach $row_list as $row}
+				<tr>
+					<td><a href="{$row.link}">{$row.title}</td>
+					<td><a href="news.php?act=cmt_time_info&news_id={$row.id}">查看</a></td>
+					<td>{$row.cmt}</td>
+					<td>{$row.up}</td>
+				</tr>
+				{/foreach}
+			</table>
+		</div>
+	</div>
+</div>
+{include file="table_footer.htm"}

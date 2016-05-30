@@ -3,7 +3,7 @@ include_once( 'init.php' );
 
 //act == cmt_num_order start
 if( isset( $_REQUEST['act']) && $_REQUEST['act'] == 'cmt_num_order' ){
-	$sql = "SELECT `news`.news_url as link, `news`.title, count(*) as cmt_num FROM `comments` as cmt JOIN `news` ON `news`.real_id = `cmt`.targetid GROUP BY cmt.targetid ORDER BY count(*) DESC LIMIT 20";
+	$sql = "SELECT real_id as id, `news`.news_url as link, `news`.title, count(*) as cmt_num FROM `comments` as cmt JOIN `news` ON `news`.real_id = `cmt`.targetid GROUP BY cmt.targetid ORDER BY count(*) DESC LIMIT 20";
 	$source = $db->exe_sql( $sql );
 	$res = array();
 	while( $row = mysql_fetch_assoc( $source ) ){
