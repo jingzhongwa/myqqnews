@@ -7,12 +7,7 @@ if( isset( $_REQUEST['act']) && $_REQUEST['act'] == 'up_num_order' ){
 		$res = unserialize( $redis->GET( 'up_num_order' ) );
 	}
 	else{
-		$sql = "SELECT u.nick, count(*) as cmt_num, sum(c.up) as up FROM `users` as u JOIN `comments` as c ON u.userid = c.userid GROUP BY c.userid ORDER BY up DESC LIMIT 100;";
-		$source = $db->exe_sql( $sql );
-		$res = array();
-		while( $row = mysql_fetch_assoc( $source ) ){
-			$res[] = $row;
-		}
+		$res = users_up_num_order( $db );
 		$redis->set( 'up_num_order', serialize( $res ) );
 	}
 	$smarty->assign( 'row_list', $res );
@@ -25,12 +20,7 @@ else if( isset( $_REQUEST['act']) && $_REQUEST['act'] == 'cmt_num_order' ){
 		$res = unserialize( $redis->GET( 'cmt_num_order' ) );
 	}
 	else{
-		$sql = "SELECT u.nick, count(*) as cmt_num, sum(c.up) as up FROM `users` as u JOIN `comments` as c ON u.userid = c.userid GROUP BY c.userid ORDER BY cmt_num DESC LIMIT 100;explain";
-		$source = $db->exe_sql( $sql );
-		$res = array();
-		while( $row = mysql_fetch_assoc( $source ) ){
-			$res[] = $row;
-		}
+		$res = users_cmt_num_order( $db );
 		$redis->set( 'cmt_num_order', serialize( $res ) );
 	}
 	$smarty->assign( 'row_list', $res );
