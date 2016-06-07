@@ -7,3 +7,5 @@ $redis = new Redis();
 $redis->connect( '127.0.0.1', 6379 );
 
 $smarty = new Smarty();
+
+include_once( './lib/lib_mysql.php');//CURD函数

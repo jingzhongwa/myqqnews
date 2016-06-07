@@ -4,6 +4,6 @@ $config = array(
     'db_port'       => '3306',
     'db_username'   => 'watcher',
     'db_password'   => 'watcher',
-    'db_name'       => 'qqnews',//库名
+    'db_name'       => 'myqqnews',//库名
     'db_pre'        => '',//前缀
 );
